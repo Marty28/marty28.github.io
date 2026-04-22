@@ -171,18 +171,19 @@ section{padding:var(--sec-py) var(--gap);position:relative;z-index:1}
 .methods{}
 .method{display:flex;align-items:center;justify-content:space-between;padding:clamp(1rem,1.4vw,1.4rem) 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink);transition:padding-left .3s}
 .method:first-child{border-top:1px solid var(--border)}
+.form-btn.as-method{border-top:1px solid var(--border)}
 .method:hover{padding-left:.6rem}
 .method-left{display:flex;align-items:center;gap:clamp(.8rem,1.2vw,1.2rem);min-width:0}
-.method-icon{width:clamp(34px,2.8vw,40px);height:clamp(34px,2.8vw,40px);border-radius:50%;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:clamp(.85rem,1vw,1rem);flex-shrink:0;transition:background .3s,border-color .3s,box-shadow .3s}
+.method-icon{width:clamp(34px,2.8vw,40px);height:clamp(34px,2.8vw,40px);border-radius:50%;border:1px solid var(--purple);background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:clamp(.85rem,1vw,1rem);flex-shrink:0;transition:background .3s,border-color .3s,box-shadow .3s;box-shadow:0 0 14px rgba(139,79,232,.4)}
 .method:hover .method-icon{background:var(--purple);border-color:var(--purple);box-shadow:0 0 18px rgba(139,79,232,.4)}
-.method-label{font-size:clamp(.62rem,.78vw,.68rem);letter-spacing:.14em;text-transform:uppercase;color:#A09CC0;font-weight:700}
+.method-label{font-size:clamp(.62rem,.78vw,.68rem);letter-spacing:.14em;text-transform:uppercase;color:#B47AFF;font-weight:700}
 .method-value{font-size:clamp(.8rem,1vw,.9rem);margin-top:.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500;color:#D0CCEE}
 .method-arrow{color:var(--muted);font-size:clamp(.8rem,.9vw,.85rem);transition:transform .3s,color .3s;flex-shrink:0;margin-left:.5rem}
 .method:hover .method-arrow{transform:translateX(5px);color:var(--purple-light)}
-.form-btn{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;padding:clamp(1.1rem,1.6vw,1.5rem) clamp(1.2rem,1.8vw,1.8rem);background:var(--surface);border:1px solid var(--border);border-radius:4px;text-decoration:none;color:var(--ink);transition:border-color .3s,box-shadow .3s,background .3s;gap:1rem}
-.form-btn:hover{border-color:var(--purple);box-shadow:0 0 28px rgba(139,79,232,.15);background:#0E0E20}
-.form-btn-left{display:flex;align-items:center;gap:clamp(.8rem,1.2vw,1.2rem);min-width:0}
-.form-icon{width:clamp(36px,2.8vw,44px);height:clamp(36px,2.8vw,44px);border-radius:4px;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:clamp(.9rem,1.1vw,1.1rem);box-shadow:0 6px 20px rgba(139,79,232,.4);flex-shrink:0}
+.form-btn{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;padding:clamp(1rem,1.4vw,1.4rem) 0;background:transparent;border:none;border-bottom:1px solid var(--border);border-radius:0;text-decoration:none;color:var(--ink);transition:padding-left .3s,border-color .3s;gap:1rem}
+.form-btn:hover{border-color:var(--purple);padding-left:.6rem}
+.form-btn-left{display:flex;align-items:center;gap:clamp(.8rem,1.2vw,1.2rem);min-width:0;flex:1}
+.form-icon{width:clamp(34px,2.8vw,40px);height:clamp(34px,2.8vw,40px);border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:clamp(.85rem,1vw,1rem);box-shadow:0 0 14px rgba(139,79,232,.4);flex-shrink:0}
 .form-label{font-size:clamp(.62rem,.78vw,.68rem);letter-spacing:.14em;text-transform:uppercase;color:#B47AFF;font-weight:700}
 .form-title{font-size:clamp(.8rem,1vw,.92rem);margin-top:.15rem;font-weight:500;color:#D0CCEE}
 .form-arrow{color:var(--muted);font-size:clamp(.85rem,1vw,1rem);transition:transform .3s,color .3s;flex-shrink:0}
@@ -252,18 +253,18 @@ footer{border-top:1px solid var(--border);padding:clamp(2rem,3vw,3rem) var(--gap
 
 <nav id="nav">
   <ul class="nav-links">
-    <li><a href="#portfolio">Trabajos</a></li>
     <li><a href="#about">Sobre mí</a></li>
     <li><a href="#process">Proceso</a></li>
+    <li><a href="#portfolio">Trabajos</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
   <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob-menu" id="mobMenu">
-  <a href="#portfolio" class="mob-link">Trabajos</a>
   <a href="#about"     class="mob-link">Sobre mí</a>
   <a href="#process"   class="mob-link">Proceso</a>
+  <a href="#portfolio" class="mob-link">Trabajos</a>
   <div class="mob-divider"></div>
   <a href="#contact" class="mob-contact">Contactar →</a>
 </div>
@@ -301,51 +302,6 @@ footer{border-top:1px solid var(--border);padding:clamp(2rem,3vw,3rem) var(--gap
     <span class="m-item">Diseño Gráfico<span class="m-dot"></span></span>
   </div>
 </div>
-
-<section id="portfolio">
-  <div class="reveal">
-    <p class="sec-eyebrow">Trabajos</p>
-    <h2 class="sec-title">Proyectos <span class="hl">Seleccionados</span></h2>
-  </div>
-  <div class="tab-bar reveal">
-    <button class="tab-btn active" data-tab="all">Todos</button>
-    <button class="tab-btn" data-tab="branding">Branding</button>
-    <button class="tab-btn" data-tab="packaging">Packaging</button>
-    <button class="tab-btn" data-tab="webdev">Desarrollo Web</button>
-  </div>
-  <div class="tab-panel active" id="tab-all">
-    <div class="proj-grid cols-2">
-      <div class="proj-card span-full"><div class="proj-visual"><div class="proj-ph bg-a"><span class="ph-glyph">◈</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding — Destacado</p><p class="proj-name">Identidad Visual Completa</p><div class="proj-tags"><span class="p-tag">Logo</span><span class="p-tag">Tipografía</span><span class="p-tag">Paleta</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-b"><span class="ph-glyph">⬡</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Envase Premium</p><div class="proj-tags"><span class="p-tag">Print</span><span class="p-tag">3D</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-c"><span class="ph-glyph">◻</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web</p><p class="proj-name">Sitio Web Corporativo</p><div class="proj-tags"><span class="p-tag">Web</span><span class="p-tag">Responsive</span></div></div></div>
-    </div>
-    <div class="upload-hint reveal"><p>Aquí irán tus trabajos — <strong>enviame las imágenes</strong> y las agrego</p></div>
-  </div>
-  <div class="tab-panel" id="tab-branding">
-    <div class="proj-grid cols-2">
-      <div class="proj-card span-full"><div class="proj-visual"><div class="proj-ph bg-a"><span class="ph-glyph">◈</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding</p><p class="proj-name">Identidad Visual Completa</p><div class="proj-tags"><span class="p-tag">Logo</span><span class="p-tag">Tipografía</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-e"><span class="ph-glyph">◎</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding</p><p class="proj-name">Marca Gastronómica</p><div class="proj-tags"><span class="p-tag">Logo</span><span class="p-tag">Menú</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-f"><span class="ph-glyph">◇</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding</p><p class="proj-name">Rebrand Corporativo</p><div class="proj-tags"><span class="p-tag">Rebrand</span><span class="p-tag">Manual</span></div></div></div>
-    </div>
-    <div class="upload-hint"><p>Enviame tus proyectos de <strong>Branding</strong> y los agrego aquí</p></div>
-  </div>
-  <div class="tab-panel" id="tab-packaging">
-    <div class="proj-grid cols-3">
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-b"><span class="ph-glyph">⬡</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Envase Premium</p><div class="proj-tags"><span class="p-tag">Print</span><span class="p-tag">3D</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-d"><span class="ph-glyph">□</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Línea de Cosméticos</p><div class="proj-tags"><span class="p-tag">Etiqueta</span><span class="p-tag">Serie</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-a"><span class="ph-glyph">◯</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Packaging Alimenticio</p><div class="proj-tags"><span class="p-tag">Food</span><span class="p-tag">CMYK</span></div></div></div>
-    </div>
-    <div class="upload-hint"><p>Enviame tus proyectos de <strong>Packaging</strong> y los agrego aquí</p></div>
-  </div>
-  <div class="tab-panel" id="tab-webdev">
-    <div class="proj-grid cols-2">
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-c"><span class="ph-glyph">◻</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web</p><p class="proj-name">Sitio Web Corporativo</p><div class="proj-tags"><span class="p-tag">Web</span><span class="p-tag">Responsive</span></div></div></div>
-      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-e"><span class="ph-glyph">▭</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web</p><p class="proj-name">Dashboard Admin</p><div class="proj-tags"><span class="p-tag">Web</span><span class="p-tag">UI</span></div></div></div>
-      <div class="proj-card span-full"><div class="proj-visual"><div class="proj-ph bg-f"><span class="ph-glyph">⊞</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web — Destacado</p><p class="proj-name">E-commerce Full Stack</p><div class="proj-tags"><span class="p-tag">E-commerce</span><span class="p-tag">Web</span><span class="p-tag">Mobile</span></div></div></div>
-    </div>
-    <div class="upload-hint"><p>Enviame tus proyectos de <strong>Desarrollo Web</strong> y los agrego aquí</p></div>
-  </div>
-</section>
 
 <section id="about">
   <div class="about-layout">
@@ -5096,6 +5052,51 @@ m6XgExJrBsvl9eJwT073lkBr+hSmytdAqdaKO2ZpReT/D6t9gJaSDtrdAAAAAElFTkSuQmCC" alt="M
     <div class="step"><p class="step-n">02</p><p class="step-title">Investigar</p><p class="step-desc">Analizo el mercado y referentes para encontrar la dirección creativa ideal.</p></div>
     <div class="step"><p class="step-n">03</p><p class="step-title">Diseñar</p><p class="step-desc">Creo con intención, refinando cada detalle hasta que todo encaja perfectamente.</p></div>
     <div class="step"><p class="step-n">04</p><p class="step-title">Entregar</p><p class="step-desc">Presento el resultado con todos los archivos listos para usar.</p></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="reveal">
+    <p class="sec-eyebrow">Trabajos</p>
+    <h2 class="sec-title">Proyectos <span class="hl">Seleccionados</span></h2>
+  </div>
+  <div class="tab-bar reveal">
+    <button class="tab-btn active" data-tab="all">Todos</button>
+    <button class="tab-btn" data-tab="branding">Branding</button>
+    <button class="tab-btn" data-tab="packaging">Packaging</button>
+    <button class="tab-btn" data-tab="webdev">Desarrollo Web</button>
+  </div>
+  <div class="tab-panel active" id="tab-all">
+    <div class="proj-grid cols-2">
+      <div class="proj-card span-full"><div class="proj-visual"><div class="proj-ph bg-a"><span class="ph-glyph">◈</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding — Destacado</p><p class="proj-name">Identidad Visual Completa</p><div class="proj-tags"><span class="p-tag">Logo</span><span class="p-tag">Tipografía</span><span class="p-tag">Paleta</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-b"><span class="ph-glyph">⬡</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Envase Premium</p><div class="proj-tags"><span class="p-tag">Print</span><span class="p-tag">3D</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-c"><span class="ph-glyph">◻</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web</p><p class="proj-name">Sitio Web Corporativo</p><div class="proj-tags"><span class="p-tag">Web</span><span class="p-tag">Responsive</span></div></div></div>
+    </div>
+    <div class="upload-hint reveal"><p>Aquí irán tus trabajos — <strong>enviame las imágenes</strong> y las agrego</p></div>
+  </div>
+  <div class="tab-panel" id="tab-branding">
+    <div class="proj-grid cols-2">
+      <div class="proj-card span-full"><div class="proj-visual"><div class="proj-ph bg-a"><span class="ph-glyph">◈</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding</p><p class="proj-name">Identidad Visual Completa</p><div class="proj-tags"><span class="p-tag">Logo</span><span class="p-tag">Tipografía</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-e"><span class="ph-glyph">◎</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding</p><p class="proj-name">Marca Gastronómica</p><div class="proj-tags"><span class="p-tag">Logo</span><span class="p-tag">Menú</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-f"><span class="ph-glyph">◇</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Branding</p><p class="proj-name">Rebrand Corporativo</p><div class="proj-tags"><span class="p-tag">Rebrand</span><span class="p-tag">Manual</span></div></div></div>
+    </div>
+    <div class="upload-hint"><p>Enviame tus proyectos de <strong>Branding</strong> y los agrego aquí</p></div>
+  </div>
+  <div class="tab-panel" id="tab-packaging">
+    <div class="proj-grid cols-3">
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-b"><span class="ph-glyph">⬡</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Envase Premium</p><div class="proj-tags"><span class="p-tag">Print</span><span class="p-tag">3D</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-d"><span class="ph-glyph">□</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Línea de Cosméticos</p><div class="proj-tags"><span class="p-tag">Etiqueta</span><span class="p-tag">Serie</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-a"><span class="ph-glyph">◯</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Packaging</p><p class="proj-name">Packaging Alimenticio</p><div class="proj-tags"><span class="p-tag">Food</span><span class="p-tag">CMYK</span></div></div></div>
+    </div>
+    <div class="upload-hint"><p>Enviame tus proyectos de <strong>Packaging</strong> y los agrego aquí</p></div>
+  </div>
+  <div class="tab-panel" id="tab-webdev">
+    <div class="proj-grid cols-2">
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-c"><span class="ph-glyph">◻</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web</p><p class="proj-name">Sitio Web Corporativo</p><div class="proj-tags"><span class="p-tag">Web</span><span class="p-tag">Responsive</span></div></div></div>
+      <div class="proj-card"><div class="proj-visual"><div class="proj-ph bg-e"><span class="ph-glyph">▭</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web</p><p class="proj-name">Dashboard Admin</p><div class="proj-tags"><span class="p-tag">Web</span><span class="p-tag">UI</span></div></div></div>
+      <div class="proj-card span-full"><div class="proj-visual"><div class="proj-ph bg-f"><span class="ph-glyph">⊞</span></div><div class="proj-hover"><span class="proj-link-label">Ver proyecto →</span></div></div><div class="proj-info"><p class="proj-category">Desarrollo Web — Destacado</p><p class="proj-name">E-commerce Full Stack</p><div class="proj-tags"><span class="p-tag">E-commerce</span><span class="p-tag">Web</span><span class="p-tag">Mobile</span></div></div></div>
+    </div>
+    <div class="upload-hint"><p>Enviame tus proyectos de <strong>Desarrollo Web</strong> y los agrego aquí</p></div>
   </div>
 </section>
 
