@@ -283,14 +283,14 @@ footer{border-top:1px solid var(--border);padding:clamp(2rem,3vw,3rem) var(--gap
   letter-spacing: -.01em;
   line-height: 1;
 }
-.pv-hero { width: 100%; aspect-ratio: 16/7; overflow: hidden; max-height: 380px; }
-.pv-hero img { width: 100%; height: 100%; max-height: 380px; object-fit: cover; display: block; }
-.pv-content { max-width: 860px; margin: 0 auto; padding: clamp(2rem,5vw,4rem) var(--gap) 5rem; }
+.pv-hero { display: none; }
+
+.pv-content { max-width: 1100px; margin: 0 auto; padding: clamp(2rem,5vw,4rem) var(--gap) 5rem; }
 .pv-eyebrow { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--purple-light); font-weight: 700; display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem; }
 .pv-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--purple); }
 .pv-title { font-family: 'Bricolage Grotesque','Syne',sans-serif; font-weight: 800; font-size: clamp(1.8rem,5vw,3.2rem); line-height: 1; letter-spacing: -.02em; margin-bottom: 2rem; }
 .pv-meta { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 2.5rem; }
-.pv-meta-item { background: var(--card); padding: 1rem 1.2rem; }
+.pv-meta-item { background: var(--card); padding: clamp(.8rem,1.2vw,1.2rem) clamp(.8rem,1.2vw,1.2rem); }
 .pv-meta-label { font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--purple-light); font-weight: 700; margin-bottom: .3rem; }
 .pv-meta-val { font-size: .88rem; color: var(--ink); font-weight: 500; }
 .pv-divider { height: 1px; background: var(--border); margin: 2rem 0; }
@@ -346,6 +346,104 @@ footer{border-top:1px solid var(--border);padding:clamp(2rem,3vw,3rem) var(--gap
 }
 @media(max-width:600px) {
   .pv-gallery-auto { grid-template-columns: repeat(2,1fr); }
+}
+
+
+/* ── LIGHTBOX ── */
+#lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.95);
+  display: none; align-items: center; justify-content: center;
+  padding: 1rem;
+  cursor: zoom-out;
+}
+#lightbox.open { display: flex; animation: fadeIn .25s ease; }
+#lightbox img {
+  max-width: 100%; max-height: 100vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.8);
+  cursor: default;
+}
+#lightbox-close {
+  position: fixed; top: 1rem; right: 1rem;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%; color: #fff; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10000;
+  transition: background .2s;
+}
+#lightbox-close:hover { background: var(--purple); border-color: var(--purple); }
+.pv-gallery-item img { cursor: zoom-in; }
+.pv-hero img { cursor: zoom-in; }
+
+
+/* ── PROJECT VIEW LAYOUT ── */
+.pv-layout {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.pv-img-col {
+  position: relative;
+}
+.pv-main-img {
+  width: 100%;
+  height: clamp(280px, 45vw, 520px);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+.pv-img-accent {
+  position: absolute; top: -1px; left: -1px;
+  width: 48px; height: 48px;
+  border-top: 2px solid var(--purple);
+  border-left: 2px solid var(--purple);
+  border-radius: 4px 0 0 0;
+}
+.pv-info-col {}
+.pv-info-col .pv-eyebrow {
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--purple-light); font-weight: 700;
+  display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem;
+}
+.pv-info-col .pv-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--purple); }
+.pv-info-col .pv-title {
+  font-family: 'Bricolage Grotesque','Syne',sans-serif; font-weight: 800;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  line-height: 1; letter-spacing: -.02em; margin-bottom: 1.5rem;
+}
+.pv-info-col .pv-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 4px;
+  overflow: hidden; margin-bottom: 1.5rem;
+}
+.pv-info-col .pv-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+.pv-info-col .pv-slabel {
+  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--purple-light); font-weight: 700; margin-bottom: .8rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.pv-info-col .pv-slabel::before { content: ''; width: 20px; height: 1px; background: var(--purple); }
+.pv-info-col .pv-desc {
+  font-size: clamp(.85rem, 1vw, .95rem); color: #C8C4E8;
+  line-height: 1.9; font-weight: 500; margin-bottom: .8rem;
+}
+/* Gallery below */
+.pv-gallery-section { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+@media(max-width: 860px) {
+  .pv-layout { grid-template-columns: 1fr; }
+  .pv-info-col .pv-meta { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width: 480px) {
+  .pv-info-col .pv-meta { grid-template-columns: 1fr; }
 }
 
 </style>
@@ -5292,6 +5390,11 @@ m6XgExJrBsvl9eJwT073lkBr+hSmytdAqdaKO2ZpReT/D6t9gJaSDtrdAAAAAElFTkSuQmCC" alt="M
 <div id="project-view" style="display:none">
   <div id="project-view-inner"></div>
 </div>
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
 <script>
 // Nav scroll
 const navEl=document.getElementById('nav');
@@ -5314,6 +5417,34 @@ document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',
   btn.classList.add('active');
   document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
 }));
+
+
+// ── LIGHTBOX ──
+window.openLightbox = function(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+window.closeLightbox = function() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+};
+var _lb = document.getElementById('lightbox');
+if (_lb) { _lb.addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+}); }
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Attach lightbox to gallery images and hero via delegation
+document.getElementById('project-view').addEventListener('click', function(e) {
+  var img = e.target.closest('.pv-gallery-item img, .pv-hero img');
+  if (img && !e.target.closest('.pv-gallery-link')) {
+    openLightbox(img.src);
+  }
+});
+
 
 // Reveal
 const io=new IntersectionObserver(entries=>{
@@ -5381,7 +5512,8 @@ const PROJECTS = {
     year: "2025", client: "—", tools: "Adobe InDesign",
     desc: "Diseño y maquetación de las páginas interiores del libro 'Los Tres Chanchitos'. Cada doble página integra ilustraciones realizadas a mano con texto narrativo, generando una experiencia de lectura visualmente rica y coherente.",
     desc2: "La composición equilibra imagen y texto de forma dinámica, guiando la mirada del lector con ritmo visual y claridad tipográfica apropiada para lectores infantiles.",
-    imgs: ["img-libro1","img-libro2","img-libro3","img-libro4","img-libro5","img-libro-cover","img-libro-pages"]
+    imgs: ["img-libro1","img-libro2","img-libro3","img-libro4","img-libro5","img-libro-cover","img-libro-pages"],
+    galleryOnly: ["img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"]
   },
   "chanchitos-all": {
     title: "Los Tres Chanchitos",
@@ -5389,7 +5521,8 @@ const PROJECTS = {
     year: "2025", client: "—", tools: "InDesign · Illustrator",
     desc: "Diseño y maquetación completa del libro infantil 'Los Tres Chanchitos' de Joshep Jacobs, publicado por Combel. El proyecto incluyó portada, contratapa y todas las páginas interiores.",
     desc2: "La paleta cálida en naranja y las ilustraciones a mano refuerzan el tono lúdico y accesible del cuento, generando una pieza editorial coherente y atractiva para el público infantil.",
-    imgs: ["img-libro-cover","img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"]
+    imgs: ["img-libro-cover","img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"],
+    galleryOnly: ["img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"]
   },
   "libro-portada": {
     title: "Los Tres Chanchitos — Portada",
@@ -5397,7 +5530,8 @@ const PROJECTS = {
     year: "2025", client: "—", tools: "InDesign · Illustrator",
     desc: "Diseño de portada y contratapa para el libro infantil de Joshep Jacobs publicado por Combel. Incluyó composición tipográfica e integración de ilustraciones a mano.",
     desc2: "La paleta naranja y las ilustraciones refuerzan el tono lúdico y accesible del cuento, generando una pieza editorial atractiva para el público infantil.",
-    imgs: ["img-libro-cover","img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"]
+    imgs: ["img-libro-cover","img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"],
+    galleryOnly: ["img-libro-pages","img-libro1","img-libro2","img-libro3","img-libro4","img-libro5"]
   },
   "libro-interior": {
     title: "Los Tres Chanchitos — Páginas interiores",
@@ -5431,49 +5565,77 @@ const PROJECTS = {
       if (!src) return;
       // Map imgid back to project pid
       var imgPidMap = {
-        'img-libro1':       'libro-interior-pages',
-        'img-libro2':       'libro-interior-pages',
-        'img-libro3':       'libro-interior-pages',
-        'img-libro4':       'libro-interior-pages',
-        'img-libro5':       'libro-interior-pages',
         'img-papeleria':    'cochinita-papeleria',
         'img-letras':       'cochinita-letras',
         'img-sticker':      'cochinita-stickers',
         'img-fotomontaje1': 'cochinita-campana1',
         'img-fotomontaje2': 'cochinita-campana2',
-        'img-libro-cover':  'libro-portada',
-        'img-libro-pages':  'libro-interior'
+        'img-libro-cover':  'libro-portada'
       };
-      var targetPid = imgPidMap[imgId];
+      var isGalleryOnly = p.galleryOnly && p.galleryOnly.indexOf(imgId) !== -1;
+      var targetPid = isGalleryOnly ? null : imgPidMap[imgId];
       if (targetPid && targetPid !== pid) {
-        galleryHtml += '<div class="pv-gallery-item pv-gallery-link" data-open="' + targetPid + '">' +
+        galleryHtml += '<div class="pv-gallery-item pv-gallery-link" data-open="' + targetPid + '" data-type="project">' +
           '<img src="' + src + '" alt="' + p.title + '"/>' +
           '<div class="pv-gallery-hint">Ver proyecto →</div>' +
           '</div>';
+      } else if (isGalleryOnly) {
+        galleryHtml += '<div class="pv-gallery-item" data-type="gallery"><img src="' + src + '" alt="' + p.title + '"/></div>';
       } else {
-        galleryHtml += '<div class="pv-gallery-item"><img src="' + src + '" alt="' + p.title + '"/></div>';
+        galleryHtml += '<div class="pv-gallery-item" data-type="gallery"><img src="' + src + '" alt="' + p.title + '"/></div>';
       }
     });
 
     var heroImgId = overrideImgId || p.imgs[0];
     var heroSrc = imgStore[heroImgId] || imgStore[p.imgs[0]] || '';
 
+    var editorialProjects = ['img-libro-cover','img-libro-pages'];
+    var editorialPids = {'img-libro-cover':'libro-portada','img-libro-pages':'libro-interior'};
+
+    function buildGallerySections(pid, p, galleryHtml) {
+      var isEditorial = p.category && p.category.indexOf('Editorial') !== -1;
+      if (!isEditorial) {
+        return '<div class="pv-gallery-section"><p class="pv-slabel">Galería</p><div class="pv-gallery pv-gallery-auto">'+galleryHtml+'</div></div>';
+      }
+      // Split into project items and gallery-only items
+      var projectItems = '';
+      var galleryItems = '';
+      var tmp = document.createElement('div');
+      tmp.innerHTML = galleryHtml;
+      tmp.querySelectorAll('[data-type]').forEach(function(el) {
+        if (el.getAttribute('data-type') === 'project') {
+          projectItems += el.outerHTML;
+        } else {
+          galleryItems += el.outerHTML;
+        }
+      });
+      var result = '';
+      if (projectItems) result += '<div class="pv-gallery-section"><p class="pv-slabel">Proyecto editorial</p><div class="pv-gallery pv-gallery-auto">'+projectItems+'</div></div>';
+      if (galleryItems) result += '<div class="pv-gallery-section"><p class="pv-slabel">Galería</p><div class="pv-gallery pv-gallery-auto">'+galleryItems+'</div></div>';
+      return result;
+    }
+
     function buildProjectHTML(pid, p, metaHtml, galleryHtml, heroSrc, tags, stats) {
       return '<div class="pv-nav">'+
         '<button class="pv-back" id="pvBackBtn" onclick="pvGoBack()">← Volver</button>'+
         '<span class="pv-nav-title"><span class="pvn-first">MARTINIANO</span> <span class="pvn-last">CASTRO</span></span>'+
       '</div>'+
-      '<div class="pv-hero"><img src="'+heroSrc+'" alt="'+p.title+'"/></div>'+
       '<div class="pv-content">'+
-        '<p class="pv-eyebrow">'+p.category+'</p>'+
-        '<h1 class="pv-title">'+p.title+'</h1>'+
-        '<div class="pv-meta">'+metaHtml+'</div>'+
-        '<p class="pv-slabel">Sobre el proyecto</p>'+
-        '<p class="pv-desc">'+p.desc+'</p>'+
-        '<p class="pv-desc">'+p.desc2+'</p>'+
-        '<div class="pv-divider"></div>'+
-        '<p class="pv-slabel">Galería</p>'+
-        '<div class="pv-gallery pv-gallery-auto">'+galleryHtml+'</div>'+
+        '<div class="pv-layout">'+
+          '<div class="pv-img-col">'+
+            '<div class="pv-img-accent"></div>'+
+            '<img class="pv-main-img" src="'+heroSrc+'" alt="'+p.title+'"/>'+
+          '</div>'+
+          '<div class="pv-info-col">'+
+            '<p class="pv-eyebrow">'+p.category+'</p>'+
+            '<h1 class="pv-title">'+p.title+'</h1>'+
+            '<div class="pv-meta">'+metaHtml+'</div>'+
+            '<p class="pv-slabel">Sobre el proyecto</p>'+
+            '<p class="pv-desc">'+p.desc+'</p>'+
+            '<p class="pv-desc">'+p.desc2+'</p>'+
+          '</div>'+
+        '</div>'+
+        (galleryHtml ? buildGallerySections(pid, p, galleryHtml) : '')+
       '</div>';
     }
 
@@ -5613,6 +5775,9 @@ const PROJECTS = {
 
 
 
+
+
+<!-- LIGHTBOX -->
 
 </body>
 </html>
